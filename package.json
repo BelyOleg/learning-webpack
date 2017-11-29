@@ -19,5 +19,8 @@
   "homepage": "https://github.com/BelyOleg/learning-webpack#readme",
   "devDependencies": {
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
   }
 }
