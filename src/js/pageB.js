@@ -5,4 +5,4 @@ var $ = require('jquery'),
     subModuleA = require('./subModuleA'),
     css = require('./../css/style.css');
 
-$('<p>index file</p>').appendTo('body');
+$('<p>I\'m page B</p>').appendTo('body');

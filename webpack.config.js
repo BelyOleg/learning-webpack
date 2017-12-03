@@ -2,12 +2,18 @@
  * Created by Bely Oleg on 28.11.2017.
  */
 const path = require('path');
+const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
-    entry: './src/js/index.js',
+    context:  __dirname + '/src/js',
+    entry: {
+        pageA: './pageA',
+        pageB: './pageB',
+        vendor: ['jquery']
+    },
     output: {
-        filename: 'bundle.js',
+        filename: "[name].bundle.js",
         path: path.resolve(__dirname, 'dist')
     },
     devtool: 'inline-source-map',
@@ -23,15 +29,18 @@ module.exports = {
         ]
     },
     plugins: [
-        new UglifyJsPlugin({
-            sourceMap: true,
-
-            uglifyOptions: {
-                output: {
-                    comments: false,
-                    beautify: false
-                }
-            }
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['common', 'vendor']
         })
+        // new UglifyJsPlugin({
+        //     sourceMap: true,
+        //
+        //     uglifyOptions: {
+        //         output: {
+        //             comments: false,
+        //             beautify: false
+        //         }
+        //     }
+        // })
     ]
 };
